@@ -10,13 +10,13 @@
 <body>
     <section>
         <div>
-            <form action="">
+            <form method="POST" action="formulaire.php">
                 <p>Prénom :</p>
-                <input type="text" name="firstName" value="">
+                <input type="text" name="firstname">
                 <p>Nom :</p>
-                <input type="text" name="name" value="">
+                <input type="text" name="name">
                 <p>E-mail :</p>
-                <input type="text" name="email" value="">
+                <input type="text" name="email">
                 <div>
                     <input type="checkbox" name="confidentialite">Oui, j’accepte la <a href="https://www.hyundai.be/fr/legal.html">déclaration de confidentialité</a> de Hyundai.
                 </div>
@@ -27,7 +27,7 @@
                     <input type="checkbox" name="donneePartenaire">Oui, j'accepte de transférer mes données personnelles au partenaire Hyundai afin de recevoir des offres intéressantes concernant les services financiers (assurance, financement, etc.). Ci-dessous, j'indique mes canaux de communication préférés.
                 </div>
                 <div>
-                    <p>Ci-dessous, j'indique mes canaux de communication préférés.</p>  
+                    <p>Ci-dessous, j'indique mes canaux de communication préférés.</p>
                     <input type="checkbox" name="tout">e-mail, téléphone et la poste
                     <ul>
                         <li><input type="checkbox" name="choix1" value="1">e-mail</li>
