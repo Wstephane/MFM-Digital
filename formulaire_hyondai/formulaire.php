@@ -2,57 +2,63 @@
 
 // Sanitisation
 
-$firstname = filter_var($_POST['firstname'], FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_LOW);
-$name = filter_var($_POST['name'], FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_LOW);
+$firstname_people = filter_var($_POST['firstname'], FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_LOW);
+$name_people = filter_var($_POST['name'], FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_LOW);
 $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
-
-// var_dump($name);
 
 // Validation
 
-if (filter_var($email, FILTER_VALIDATE_EMAIL) && !empty($_POST['confidentialite']) && !empty($_POST['contact']) && !empty($_POST['donneePartenaire'])) {
-    
-}
+
+// if (filter_var($email, FILTER_VALIDATE_EMAIL) && !empty($_POST['confidentialite']) && !empty($_POST['contact']) && !empty($_POST['donneePartenaire'])) {
+
+// } else {
+//     include 'modal.php';
+// }
 
 $tout = (empty($_POST['tout'])) ? 0 : 1;
-if (!empty($tout)){
-    $choix1 = 1;
-    $choix2 = 1;
-    $choix3 = 1;
+if (!empty($tout)) {
+    $opt_email = 1;
+    $opt_phone = 1;
+    $opt_poste = 1;
 } else {
-    $choix1 = (empty($_POST['choix1'])) ? 0 : 1;
-    $choix2 = (empty($_POST['choix2'])) ? 0 : 1;
-    $choix3 = (empty($_POST['choix3'])) ? 0 : 1;
+    $opt_email = (empty($_POST['opt_email'])) ? 0 : 1;
+    $opt_phone = (empty($_POST['opt_phone'])) ? 0 : 1;
+    $opt_poste = (empty($_POST['opt_poste'])) ? 0 : 1;
 }
-
-print_r($_POST);
 
 try
 {
-	// On se connecte à MySQL
+	// Connect to MySQL
     $dbhost = 'localhost';
     $dbname = 'Hyundai';
     $dbusername = 'root';
     $dbpassword = 'root';
 
-    $link = new PDO("mysql:host=$dbhost;dbname=$dbname", $dbusername, $dbpassword);
+    $link = new PDO("mysql:host=$dbhost;dbname=$dbname", $dbusername, $dbpassword, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION ));
 
-    $statement = $link->prepare('INSERT INTO formulaire (date, firstname, name, email, opt_email, opt_phone, opt_poste)
-    VALUES (:date, :firstname, :name, :email, :opt_email, :opt_phone, :opt_poste)');
+    $stmt = $link->prepare("INSERT INTO formulaire (date_apply, email, firstname_people, name_people, opt_email, opt_phone, opt_poste)
+                            VALUES (:date_apply, :email, :firstname_people, :name_people, :opt_email, :opt_phone, :opt_poste)");
 
-    $statement->execute([
-    'date' => NOW(),
-    'firstname' => $firstname,
-    'name' => $name,
-    'email' => $email,
-    'opt_email' => $choix1,
-    'opt_phone' => $choix2,
-    'opt_poste' => $choix3,
-    ]);
+     $dt = date("Y-m-d H:i:s");
+     $stmt->bindParam(':date_apply', $dt);
+     $stmt->bindParam(':firstname_people', $firstname_people);
+     $stmt->bindParam(':name_people', $name_people);
+     $stmt->bindParam(':email', $email);
+
+     $stmt->bindParam(':opt_email', $opt_email);
+     $stmt->bindParam(':opt_phone', $opt_phone);
+     $stmt->bindParam(':opt_poste', $opt_poste);
+
+     // insertion d'une ligne
+
+     $stmt->execute();
+
 }
+
 catch(Exception $e)
 {
-	// En cas d'erreur, on affiche un message et on arrête tout
+        "En cas d'erreur, on affiche un message et on arrête tout";
         die('Erreur : '.$e->getMessage());
 }
+
 ?>
