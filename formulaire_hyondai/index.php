@@ -10,7 +10,7 @@
 <body>
     <section>
         <div>
-            <form method="POST" action="formulaire.php">
+            <form id="formulaire" method="POST" action="formulaire.php">
                 <p>Prénom :</p>
                 <input type="text" name="firstname">
                 <p>Nom :</p>
@@ -30,9 +30,9 @@
                     <p>Ci-dessous, j'indique mes canaux de communication préférés.</p>
                     <input type="checkbox" name="tout">e-mail, téléphone et la poste
                     <ul>
-                        <li><input type="checkbox" name="choix1" value="1">e-mail</li>
-                        <li><input type="checkbox" name="choix2" value="2">téléphone</li>
-                        <li><input type="checkbox" name="choix3" value="3">la poste</li>
+                        <li><input type="checkbox" name="opt_email" value="1">e-mail</li>
+                        <li><input type="checkbox" name="opt_phone" value="2">téléphone</li>
+                        <li><input type="checkbox" name="opt_poste" value="3">la poste</li>
                     </ul>
                 </div>
                 <p>Attention, si on ne reçoit pas un opt-in, on ne sera plus capable de vous contacter.</p>
@@ -40,5 +40,49 @@
             </form>
         </div>
     </section>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.0/dist/jquery.validate.min.js"></script>
+
+    <script>
+    $(function() {
+        $("#formulaire").validate({
+            rules: {
+                "firstname": {
+                    "minlength": 2,
+                    "maxlength": 50,
+                    "lettersonly": true
+                },
+                "name": {
+                    "minlength": 2,
+                    "maxlength": 50,
+                    "lettersonly": true
+                },
+                "email": {
+                    "email": true,
+                    "required": true,
+                    "minlength": 10,
+                    "maxlength": 50
+                },
+                "confidentialite": {
+                    "required": true
+                },
+                "contact": {
+                    "required": true
+                },
+                "donneePartenaire": {
+                    "required": true
+                }
+            }
+        })
+    });
+
+    $.extend(jQuery.validator.messages, {
+        required: "Ce champs est obligatoire",
+        email: "Merci de mettre une adresse e-mail valide",
+    });
+
+    </script>
 </body>
 </html>
