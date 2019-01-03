@@ -16,7 +16,7 @@
                 <p>Nom :</p>
                 <input type="text" name="name">
                 <p>E-mail :</p>
-                <input type="text" name="email">
+                <input type="email" id="email" name="email">
                 <div>
                     <input type="checkbox" name="confidentialite">Oui, j’accepte la <a href="https://www.hyundai.be/fr/legal.html">déclaration de confidentialité</a> de Hyundai.
                 </div>
@@ -41,48 +41,56 @@
         </div>
     </section>
 
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.0/dist/jquery.validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
 
     <script>
-    $(function() {
-        $("#formulaire").validate({
-            rules: {
-                "firstname": {
-                    "minlength": 2,
-                    "maxlength": 50,
-                    "lettersonly": true
-                },
-                "name": {
-                    "minlength": 2,
-                    "maxlength": 50,
-                    "lettersonly": true
-                },
-                "email": {
-                    "email": true,
-                    "required": true,
-                    "minlength": 10,
-                    "maxlength": 50
-                },
-                "confidentialite": {
-                    "required": true
-                },
-                "contact": {
-                    "required": true
-                },
-                "donneePartenaire": {
-                    "required": true
+        $(function() {
+            $("#formulaire").validate({
+                rules: {
+                    "firstname": {
+                        minlength: 1,
+                        maxlength: 30,
+                    },
+                    "name": {
+                        minlength: 1,
+                        maxlength: 30,
+                    },
+                    "email": {
+                        required: true,
+                        email: true,
+                        regex: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+                    },
+                    "confidentialite": {
+                        required: true
+                    },
+                    "contact": {
+                        required: true
+                    },
+                    "donneePartenaire": {
+                        required: true
+                    }
                 }
-            }
-        })
-    });
+            })
+            
+            $.extend(jQuery.validator.messages, {
+                required: "Ce champs est obligatoire",
+                email: "Merci de mettre une adresse e-mail valide",
+                minlength: $.validator.format("Veuillez entrer minimun {0} caractères."),
+                maxlength: $.validator.format("Veuillez entrer maximum {0} caractères."),   
+            });
 
-    $.extend(jQuery.validator.messages, {
-        required: "Ce champs est obligatoire",
-        email: "Merci de mettre une adresse e-mail valide",
-    });
-
+            jQuery.validator.addMethod(
+                "regex",
+                function(value, element, regexp) {  
+                    if (regexp.constructor != RegExp)
+                        regexp = new RegExp(regexp);
+                    else if (regexp.global)
+                        regexp.lastIndex = 0;
+                    return this.optional(element) || regexp.test(value);
+                },"erreur dans le e-mail"
+            );
+        });
     </script>
 </body>
 </html>
