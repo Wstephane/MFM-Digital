@@ -36,15 +36,22 @@
                     </ul>
                 </div>
                 <p>Attention, si on ne reçoit pas un opt-in, on ne sera plus capable de vous contacter.</p>
-                <input type="submit" value="Envoyer">
+                <input id="submit" type="submit" value="Envoyer">
             </form>
         </div>
     </section>
+
+    <div id="modal" class="modal-content">
+        <div clas="Modal-Body">
+            <p>Le formulaire a été envoyer, merci pour vos réponses.</p>
+        </div>
+    </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
 
     <script>
+        // Validation du formulaire et Regex
         $(function() {
             $("#formulaire").validate({
                 rules: {
@@ -92,7 +99,12 @@
                     return this.optional(element) || regexp.test(value);
                 },"Erreur, merci de mettre des caractères accepter"
             );
+            // Activer la Modal
+            $("#modal").hide('slow');
+
+            
         });
+
     </script>
 </body>
 </html>

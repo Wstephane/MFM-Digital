@@ -9,7 +9,7 @@
 <body>
     <div id="modal" class="modal-content">
         <div clas="Modal-Body">
-            <p>Merci de bien vouloir accepter les trois options demander</p>
+            <p>Le formulaire a été envoyer, merci pour vos réponses.</p>
         </div>
     </div>
 
