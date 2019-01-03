@@ -30,9 +30,9 @@
                     <p>Ci-dessous, j'indique mes canaux de communication préférés.</p>
                     <input type="checkbox" name="tout">e-mail, téléphone et la poste
                     <ul>
-                        <li><input type="checkbox" name="opt_email" value="1">e-mail</li>
-                        <li><input type="checkbox" name="opt_phone" value="2">téléphone</li>
-                        <li><input type="checkbox" name="opt_poste" value="3">la poste</li>
+                        <li><input type="checkbox" name="opt_email" value="1">E-mail</li>
+                        <li><input type="checkbox" name="opt_phone" value="2">Téléphone</li>
+                        <li><input type="checkbox" name="opt_poste" value="3">La poste</li>
                     </ul>
                 </div>
                 <p>Attention, si on ne reçoit pas un opt-in, on ne sera plus capable de vous contacter.</p>
@@ -49,12 +49,14 @@
             $("#formulaire").validate({
                 rules: {
                     "firstname": {
-                        minlength: 1,
+                        minlength: 2,
                         maxlength: 30,
+                        regex: /^(?=.*?[A-Za-z])[A-Za-z+]+$/
                     },
                     "name": {
-                        minlength: 1,
+                        minlength: 2,
                         maxlength: 30,
+                        regex: /^(?=.*?[A-Za-z])[A-Za-z+]+$/
                     },
                     "email": {
                         required: true,
@@ -88,7 +90,7 @@
                     else if (regexp.global)
                         regexp.lastIndex = 0;
                     return this.optional(element) || regexp.test(value);
-                },"erreur dans le e-mail"
+                },"Erreur, merci de mettre des caractères accepter"
             );
         });
     </script>
