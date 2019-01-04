@@ -1,4 +1,4 @@
-<?php
+<?php session_start();
 
 // Sanitisation
 
@@ -39,19 +39,22 @@ try
     $stmt = $link->prepare("INSERT INTO formulaire (date_apply, email, firstname_people, name_people, opt_email, opt_phone, opt_poste)
                             VALUES (:date_apply, :email, :firstname_people, :name_people, :opt_email, :opt_phone, :opt_poste)");
 
-     $dt = date("Y-m-d H:i:s");
-     $stmt->bindParam(':date_apply', $dt);
-     $stmt->bindParam(':firstname_people', $firstname_people);
-     $stmt->bindParam(':name_people', $name_people);
-     $stmt->bindParam(':email', $email);
+    $dt = date("Y-m-d H:i:s");
+    $stmt->bindParam(':date_apply', $dt);
+    $stmt->bindParam(':firstname_people', $firstname_people);
+    $stmt->bindParam(':name_people', $name_people);
+    $stmt->bindParam(':email', $email);
 
-     $stmt->bindParam(':opt_email', $opt_email);
-     $stmt->bindParam(':opt_phone', $opt_phone);
-     $stmt->bindParam(':opt_poste', $opt_poste);
+    $stmt->bindParam(':opt_email', $opt_email);
+    $stmt->bindParam(':opt_phone', $opt_phone);
+    $stmt->bindParam(':opt_poste', $opt_poste);
 
-     // insertion d'une ligne
+    // insertion d'une ligne
 
-     $stmt->execute();
+    $stmt->execute();
+    $_SESSION['flash'] = Modal;
+    header('Location: index.php');
+    exit;
 
 }
 

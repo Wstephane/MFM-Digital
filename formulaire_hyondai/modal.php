@@ -13,12 +13,5 @@
         </div>
     </div>
 
-<script>
-
-var modal = document.getElementById("modal");
-
-
-</script>
-
 </body>
 </html>

@@ -1,3 +1,6 @@
+<?php session_start();
+print_r($_SESSION);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -36,7 +39,7 @@
                     </ul>
                 </div>
                 <p>Attention, si on ne reçoit pas un opt-in, on ne sera plus capable de vous contacter.</p>
-                <input id="submit" type="submit" value="Envoyer">
+                <button id="submit" type="submit" value="Envoyer">Envoyer</button>
             </form>
         </div>
     </section>
@@ -100,8 +103,11 @@
                 },"Erreur, merci de mettre des caractères accepter"
             );
             // Activer la Modal
-            $("#modal").hide('slow');
+            $("#modal").hide();
 
+            $("#submit").click(function(){
+                $("#modal").show();
+            });
             
         });
 
