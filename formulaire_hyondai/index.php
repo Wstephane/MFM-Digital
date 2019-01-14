@@ -39,26 +39,25 @@ print_r($_SESSION);
                     </ul>
                 </div>
                 <p>Attention, si on ne reçoit pas un opt-in, on ne sera plus capable de vous contacter.</p>
-                <button id="submit2" type="submit" value="Envoyer">Envoyer</button>
+                <button id="submit" type="submit" value="Envoyer">Envoyer</button>
             </form>
         </div>
     </section>
 
     <!-- Modal -->
-    <button id="myBtn">Open Modal</button>
     <div class="modal">
-        <div clas="modal-content">
+        <div class="modal-content">
             <span class="close">&times;</span>
             <p>Le formulaire a été envoyer, merci pour vos réponses.</p>
         </div>
     </div>
 
-    <!-- Script jquery et Validation -->
+    <!-- Script jquery & Validation -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
 
     <script>
-        // Validation du formulaire et Regex
+        // Form & Regex Validation
         $(function() {
             $("#formulaire").validate({
                 rules: {
@@ -106,14 +105,9 @@ print_r($_SESSION);
                     return this.optional(element) || regexp.test(value);
                 },"Erreur, merci de mettre des caractères accepter"
             );
-            // Activer la Modal
-            // $(".modal").hide();
 
-            // $("#submit").click(function(){
-            //     $(".modal").show();
-            // });
-
-            $("#myBtn").on('click', function() {
+            //Modal Activation
+            $("#submit").on('click', function() {
                 $(".modal").css("display", "block");
             });
 
@@ -121,12 +115,11 @@ print_r($_SESSION);
                 $(".modal").css("display", "none");
             });
 
-            $(window).click(function(event) {
-                if (!$(event.target).closest(".modal")) {
+            $(window).on('click', function(event) {
+                if (event.target == $('.modal')) {
                     $(".modal").css("display", "none");
                 }
             });
-
         });
     </script>
 </body>
