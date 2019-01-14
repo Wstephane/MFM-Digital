@@ -115,11 +115,22 @@ print_r($_SESSION);
                 $(".modal").css("display", "none");
             });
 
-            $(window).on('click', function(event) {
-                if (event.target == $('.modal')) {
-                    $(".modal").css("display", "none");
+            $(document).ready(function() {
+                if $(".modal").on('click', function() {
+                    $(".modal").css("display", "none");)
+                } else {
+                    $(".modal-content").on('click', function() {
+                        $(".modal").css("display", "block");
+                    })
                 }
+                    
+                });
             });
+            // $(window).on('click', function(event) {
+            //     if (event.target == $('.modal-content')) {
+            //         $(".modal").css("display", "none");
+            //     }
+            // });
         });
     </script>
 </body>
