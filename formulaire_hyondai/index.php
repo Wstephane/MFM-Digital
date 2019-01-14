@@ -44,7 +44,12 @@ print_r($_SESSION);
         </div>
     </section>
 
-    <?php include("modal.php")?>
+    <div class="modal">
+        <div clas="modal-content">
+            <span class="close">&times;</span>
+            <p>Le formulaire a été envoyer, merci pour vos réponses.</p>
+        </div>
+    </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
@@ -99,12 +104,11 @@ print_r($_SESSION);
                 },"Erreur, merci de mettre des caractères accepter"
             );
             // Activer la Modal
-            $("#modal").hide();
+            $(".modal").hide();
 
-            $("#submit").click(function(){
-                $("#modal").show();
+            $(".submit").click(function(){
+                $(".modal").show();
             });
-            
         });
 
     </script>
