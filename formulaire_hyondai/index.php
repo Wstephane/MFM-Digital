@@ -39,11 +39,13 @@ print_r($_SESSION);
                     </ul>
                 </div>
                 <p>Attention, si on ne reçoit pas un opt-in, on ne sera plus capable de vous contacter.</p>
-                <button id="submit" type="submit" value="Envoyer">Envoyer</button>
+                <button id="submit2" type="submit" value="Envoyer">Envoyer</button>
             </form>
         </div>
     </section>
 
+    <!-- Modal -->
+    <button id="myBtn">Open Modal</button>
     <div class="modal">
         <div clas="modal-content">
             <span class="close">&times;</span>
@@ -51,6 +53,7 @@ print_r($_SESSION);
         </div>
     </div>
 
+    <!-- Script jquery et Validation -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
 
@@ -104,13 +107,27 @@ print_r($_SESSION);
                 },"Erreur, merci de mettre des caractères accepter"
             );
             // Activer la Modal
-            $(".modal").hide();
+            // $(".modal").hide();
 
-            $(".submit").click(function(){
-                $(".modal").show();
+            // $("#submit").click(function(){
+            //     $(".modal").show();
+            // });
+
+            $("#myBtn").on('click', function() {
+                $(".modal").css("display", "block");
             });
-        });
 
+            $(".close").on('click', function() {
+                $(".modal").css("display", "none");
+            });
+
+            $(window).click(function(event) {
+                if (!$(event.target).closest(".modal")) {
+                    $(".modal").css("display", "none");
+                }
+            });
+
+        });
     </script>
 </body>
 </html>
