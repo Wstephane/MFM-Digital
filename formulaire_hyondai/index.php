@@ -1,5 +1,4 @@
 <?php session_start();
-print_r($_SESSION);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -11,7 +10,22 @@ print_r($_SESSION);
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-    <section>
+    <section class="img">
+        <div class="logo">
+            <img src="img/Hyundai_Logo.jpg" alt="Logo Hyundai" width="540px" height="174px">
+        </div>
+        <div>
+            <img src="img/banner.jpg" alt="Bannière de présentation" width="540px" height="388px">
+        </div>
+    </section>
+    <section class="form">
+        <h1>Inscrivez-vous maintenant et restez dans la famille Hyundai</h1>
+        <div>
+            <form id="formulaire_gender" method="POST" action="formulaire.php">
+                <input type="radio" name="homme">Homme
+                <input type="radio" name="femme">Femme
+            </form>
+        </div>
         <div>
             <form id="formulaire" method="POST" action="formulaire.php">
                 <p>Prénom :</p>
@@ -20,13 +34,13 @@ print_r($_SESSION);
                 <input type="text" name="name">
                 <p>E-mail :</p>
                 <input type="email" id="email" name="email">
-                <div>
+                <div class="confidentialite">
                     <input type="checkbox" name="confidentialite">Oui, j’accepte la <a href="https://www.hyundai.be/fr/legal.html">déclaration de confidentialité</a> de Hyundai.
                 </div>
-                <div>
+                <div class="contact">
                     <input type="checkbox" name="contact">Oui, je souhaite être tenu au courant des événements à venir, des promotions exclusives et des offres intéressantes concernant les produits et/ou les services proposés par Hyundai. J'accepte que l’on me contacte pour des fins de marketing.
                 </div>
-                <div>
+                <div class="donneePartenaire">
                     <input type="checkbox" name="donneePartenaire">Oui, j'accepte de transférer mes données personnelles au partenaire Hyundai afin de recevoir des offres intéressantes concernant les services financiers (assurance, financement, etc.). Ci-dessous, j'indique mes canaux de communication préférés.
                 </div>
                 <div>
@@ -115,17 +129,19 @@ print_r($_SESSION);
                 $(".modal").css("display", "none");
             });
 
-            $(document).ready(function() {
-                if $(".modal").on('click', function() {
-                    $(".modal").css("display", "none");)
-                } else {
-                    $(".modal-content").on('click', function() {
-                        $(".modal").css("display", "block");
-                    })
-                }
+                // Test pour faire que si l'on clique en dehors de la modal, elle disparait.
+
+            // $(document).ready(function() {
+            //     if $(".modal").on('click', function() {
+            //         $(".modal").css("display", "none");)
+            //     } else {
+            //         $(".modal-content").on('click', function() {
+            //             $(".modal").css("display", "block");
+            //         })
+            //     }
                     
-                });
-            });
+            //     });
+            // });
             // $(window).on('click', function(event) {
             //     if (event.target == $('.modal-content')) {
             //         $(".modal").css("display", "none");
