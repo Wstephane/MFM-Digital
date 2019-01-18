@@ -130,7 +130,7 @@
                 },"Erreur, merci de mettre des caractères accepter"
             );
 
-            //Modal Activation
+            // Modal Activation
             $("#submit").on('click', function() {
                 $(".modal").css("display", "block");
             });
@@ -139,12 +139,23 @@
                 $(".modal").css("display", "none");
             });
 
-            if ($("#all").on(:checked)) {
-                $(".email2" || ".phone"|| ".poste").on(":checked");
-            }
+            // Checkout changement de groupe
+            if ($(".all").on('change', function() {
+                if ($(this).prop('checked')) {
+                    $(".email2, .phone, .poste").prop('checked', true);
+                } else {
+                    $(".email2, .phone, .poste").prop('checked', false);
+                }
+            }));
+
+            if ($(".email" || ".phone" || ".poste").on('change', function() {
+                if ($(this).prop('checked')) {
+                    $(".all").prop('checked', false);
+                }
+            }));
 
 
-                // Test pour faire que si l'on clique en dehors de la modal, elle disparait.
+            // Test pour faire que si l'on clique en dehors de la modal, elle disparait.
 
             // $(document).ready(function() {
             //     if $(".modal").on('click', function() {
