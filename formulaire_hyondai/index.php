@@ -21,35 +21,43 @@
     <section class="form">
         <h1>Inscrivez-vous maintenant et restez dans la famille Hyundai</h1>
         <div>
-            <form id="formulaire_gender" method="POST" action="formulaire.php">
-                <input type="radio" name="homme">Homme
-                <input type="radio" name="femme">Femme
-            </form>
-        </div>
-        <div>
             <form id="formulaire" method="POST" action="formulaire.php">
-                <p>Prénom :</p>
-                <input type="text" name="firstname">
-                <p>Nom :</p>
-                <input type="text" name="name">
-                <p>E-mail :</p>
-                <input type="email" id="email" name="email">
+                <div class="genre">
+                    <input class="homme" type="radio" name="genre" value="1" checked>
+                    <label for="Homme">Homme</label>
+                    <input class="femme" type="radio" name="genre" value="2">
+                    <label for="Femme">Femme</label>
+                </div>
+                <div class="champs">
+                    <div class="prenom">
+                        <p>Prénom :</p>
+                        <input type="text" name="firstname">
+                    </div>
+                    <div class="nom">
+                        <p>Nom :</p>
+                        <input type="text" name="name">
+                    </div>
+                    <div class="e-mail">
+                        <p>E-mail :</p>
+                        <input id="email" type="email" name="email">
+                    </div>
+                </div>
                 <div class="confidentialite">
-                    <input type="checkbox" name="confidentialite">Oui, j’accepte la <a href="https://www.hyundai.be/fr/legal.html">déclaration de confidentialité</a> de Hyundai.
+                    <input id="confi" type="checkbox" name="confidentialite">Oui, j’accepte la <a href="https://www.hyundai.be/fr/legal.html">déclaration de confidentialité</a> de Hyundai.
                 </div>
                 <div class="contact">
-                    <input type="checkbox" name="contact">Oui, je souhaite être tenu au courant des événements à venir, des promotions exclusives et des offres intéressantes concernant les produits et/ou les services proposés par Hyundai. J'accepte que l’on me contacte pour des fins de marketing.
+                    <input id="cont" type="checkbox" name="contact">Oui, je souhaite être tenu au courant des événements à venir, des promotions exclusives et des offres intéressantes concernant les produits et/ou les services proposés par Hyundai. J'accepte que l’on me contacte pour des fins de marketing.
                 </div>
                 <div class="donneePartenaire">
-                    <input type="checkbox" name="donneePartenaire">Oui, j'accepte de transférer mes données personnelles au partenaire Hyundai afin de recevoir des offres intéressantes concernant les services financiers (assurance, financement, etc.). Ci-dessous, j'indique mes canaux de communication préférés.
+                    <input id="donnee" type="checkbox" name="donneePartenaire">Oui, j'accepte de transférer mes données personnelles au partenaire Hyundai afin de recevoir des offres intéressantes concernant les services financiers (assurance, financement, etc.). Ci-dessous, j'indique mes canaux de communication préférés.
                 </div>
                 <div>
                     <p>Ci-dessous, j'indique mes canaux de communication préférés.</p>
-                    <input type="checkbox" name="tout">e-mail, téléphone et la poste
+                    <input class="all" type="checkbox" name="tout">E-mail, Téléphone et La poste
                     <ul>
-                        <li><input type="checkbox" name="opt_email" value="1">E-mail</li>
-                        <li><input type="checkbox" name="opt_phone" value="2">Téléphone</li>
-                        <li><input type="checkbox" name="opt_poste" value="3">La poste</li>
+                        <li><input class="email2" type="checkbox" name="opt_email" value="1">E-mail</li>
+                        <li><input class="phone" type="checkbox" name="opt_phone" value="2">Téléphone</li>
+                        <li><input class="poste" type="checkbox" name="opt_poste" value="3">La poste</li>
                     </ul>
                 </div>
                 <p>Attention, si on ne reçoit pas un opt-in, on ne sera plus capable de vous contacter.</p>
@@ -65,6 +73,8 @@
             <p>Le formulaire a été envoyer, merci pour vos réponses.</p>
         </div>
     </div>
+
+    <!-- Fin HTML -->
 
     <!-- Script jquery & Validation -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -128,6 +138,11 @@
             $(".close").on('click', function() {
                 $(".modal").css("display", "none");
             });
+
+            if ($("#all").on(:checked)) {
+                $(".email2" || ".phone"|| ".poste").on(":checked");
+            }
+
 
                 // Test pour faire que si l'on clique en dehors de la modal, elle disparait.
 
