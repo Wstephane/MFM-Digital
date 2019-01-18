@@ -81,7 +81,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
 
     <script>
-        // Form & Regex Validation
+        // Form & Regex Validation & Regex
         $(function() {
             $("#formulaire").validate({
                 rules: {
@@ -139,7 +139,7 @@
                 $(".modal").css("display", "none");
             });
 
-            // Checkout changement de groupe
+            // Check des options de contact
             if ($(".all").on('change', function() {
                 if ($(this).prop('checked')) {
                     $(".email2, .phone, .poste").prop('checked', true);
@@ -148,9 +148,12 @@
                 }
             }));
 
-            if ($(".email" || ".phone" || ".poste").on('change', function() {
-                if ($(this).prop('checked')) {
+            // Check du .all
+            if ($(".email2, .phone, .poste").on('change', function() {
+                if ($(".all").prop('checked')) {
                     $(".all").prop('checked', false);
+                } else {
+                    $(".all").prop('checked', true);
                 }
             }));
 
