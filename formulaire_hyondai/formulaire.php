@@ -36,8 +36,8 @@ try
 
     $link = new PDO("mysql:host=$dbhost;dbname=$dbname", $dbusername, $dbpassword, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION ));
 
-    $stmt = $link->prepare("INSERT INTO formulaire (date_apply, email, firstname_people, name_people, opt_email, opt_phone, opt_poste)
-                            VALUES (:date_apply, :email, :firstname_people, :name_people, :opt_email, :opt_phone, :opt_poste)");
+    $stmt = $link->prepare("INSERT INTO formulaire (date_apply, email, firstname_people, name_people, opt_email, opt_phone, opt_poste, phone, street, street_number, city, postal_code)
+                            VALUES (:date_apply, :email, :firstname_people, :name_people, :opt_email, :opt_phone, :opt_poste, :phone, :street, :street_number, :city, :postal_code)");
 
     $dt = date("Y-m-d H:i:s");
     $stmt->bindParam(':date_apply', $dt);
@@ -48,6 +48,12 @@ try
     $stmt->bindParam(':opt_email', $opt_email);
     $stmt->bindParam(':opt_phone', $opt_phone);
     $stmt->bindParam(':opt_poste', $opt_poste);
+    $stmt->bindParam(':phone', $phone);
+    $stmt->bindParam(':street', $street);
+    $stmt->bindParam(':street_number', $street_number);
+    $stmt->bindParam(':city', $city);
+    $stmt->bindParam(':postal_code', $postal_code);
+
 
     // insertion d'une ligne
 

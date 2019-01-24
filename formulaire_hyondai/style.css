@@ -19,7 +19,17 @@ h1 {
   margin-right:25%;
 }
 
-#email {
+a {
+  color: #007bff;;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}
+
+.code_postal {
   margin-bottom: 25px;
 }
 
@@ -49,6 +59,7 @@ ul li {
   padding: 10px;
   border-radius: 10px;
   border: 1px solid #004c52;
+  cursor: pointer;
 }
 
 #submit:hover {

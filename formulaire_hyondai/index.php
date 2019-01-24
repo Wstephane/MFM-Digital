@@ -41,6 +41,26 @@
                         <p>E-mail :</p>
                         <input id="email" type="email" name="email">
                     </div>
+                    <div class="telephone">
+                        <p>Télèphone :</p>
+                        <input type="texte" name="phone">
+                    </div>
+                    <div class="rue">
+                        <p>Rue :</p>
+                        <input type="text" name="street">
+                    </div>
+                    <div class="numero">
+                        <p>Numéro :</p>
+                        <input type="text" name="street_number">
+                    </div>
+                    <div class="ville">
+                        <p>Ville :</p>
+                        <input type="text" name="city">
+                    </div>
+                    <div class="code_postal">
+                        <p>Code Postal: </p>
+                        <input type="text" name="postal_code">
+                    </div>
                 </div>
                 <div class="confidentialite">
                     <input id="confi" type="checkbox" name="confidentialite">Oui, j’accepte la <a href="https://www.hyundai.be/fr/legal.html">déclaration de confidentialité</a> de Hyundai.
@@ -108,7 +128,10 @@
                     },
                     "donneePartenaire": {
                         required: true
-                    }
+                    },
+                    "phone": {
+                        maxlength: 10,
+                    },
                 }
             })
             
