@@ -62,13 +62,13 @@
                         <input type="text" name="postal_code">
                     </div>
                 </div>
-                <div class="confidentialite">
+                <div class="confidentialite checkbox">
                     <input id="confi" type="checkbox" name="confidentialite">Oui, j’accepte la <a href="https://www.hyundai.be/fr/legal.html">déclaration de confidentialité</a> de Hyundai.
                 </div>
-                <div class="contact">
+                <div class="contact checkbox">
                     <input id="cont" type="checkbox" name="contact">Oui, je souhaite être tenu au courant des événements à venir, des promotions exclusives et des offres intéressantes concernant les produits et/ou les services proposés par Hyundai. J'accepte que l’on me contacte pour des fins de marketing.
                 </div>
-                <div class="donneePartenaire">
+                <div class="donneePartenaire checkbox">
                     <input id="donnee" type="checkbox" name="donneePartenaire">Oui, j'accepte de transférer mes données personnelles au partenaire Hyundai afin de recevoir des offres intéressantes concernant les services financiers (assurance, financement, etc.). Ci-dessous, j'indique mes canaux de communication préférés.
                 </div>
                 <div>
@@ -162,7 +162,7 @@
                 $(".modal").css("display", "none");
             });
 
-            // Check des options de contact
+            // Check du "si on active le .all alors les 3 checkbox sont activé"
             if ($(".all").on('change', function() {
                 if ($(this).prop('checked')) {
                     $(".email2, .phone, .poste").prop('checked', true);
@@ -171,15 +171,15 @@
                 }
             }));
 
-            // Check du .all
+            // Check du si les 3 sont activié alors le .all est activé
             if ($(".email2, .phone, .poste").on('change', function() {
-                if ($(".all").prop('checked')) {
-                    $(".all").prop('checked', false);
-                } else {
+                var a = $(".email2:checked, .phone:checked, .poste:checked").length;
+                if (a == 3) {
                     $(".all").prop('checked', true);
+                } else {
+                    $(".all").prop('checked', false);
                 }
             }));
-
 
             // Test pour faire que si l'on clique en dehors de la modal, elle disparait.
 
@@ -192,7 +192,7 @@
             //         })
             //     }
                     
-            //     });
+                //  });
             // });
             // $(window).on('click', function(event) {
             //     if (event.target == $('.modal-content')) {
