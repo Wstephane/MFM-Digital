@@ -22,10 +22,10 @@
         <h1>Inscrivez-vous maintenant et restez dans la famille Hyundai</h1>
         <div>
             <form id="formulaire" method="POST" action="formulaire.php">
-                <div class="genre">
-                    <input class="homme" type="radio" name="genre" value="1" checked>
+                <div class="gender">
+                    <input class="homme" type="radio" name="gender" value="1" checked>
                     <label for="Homme">Homme</label>
-                    <input class="femme" type="radio" name="genre" value="2">
+                    <input class="femme" type="radio" name="gender" value="2">
                     <label for="Femme">Femme</label>
                 </div>
                 <div class="champs">
