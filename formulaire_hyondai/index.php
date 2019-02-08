@@ -11,8 +11,8 @@
 </head>
 <body>
     <section class="img">
-        <div class="logo">
-            <img src="img/Hyundai_Logo.jpg" alt="Logo Hyundai" width="540px" height="174px">
+        <div id="logomain" class="logo">
+            <img class="logogauche" src="img/Hyundai_Logo.jpg" alt="Logo Hyundai" width="540px" height="174px">
         </div>
         <div>
             <img src="img/banner.jpg" alt="Bannière de présentation" width="540px" height="388px">
@@ -171,7 +171,7 @@
                 }
             }));
 
-            // Check du si les 3 sont activié alors le .all est activé
+            // Check du si les 3 sont activié alors le .all est activé, si une seul n'est pas activé alors .all est désactivé
             if ($(".email2, .phone, .poste").on('change', function() {
                 var a = $(".email2:checked, .phone:checked, .poste:checked").length;
                 if (a == 3) {
@@ -181,6 +181,21 @@
                 }
             }));
 
+            
+            // $(document).ready(function() {
+            //     $(".logogauche").click (function() {
+            //         $(".logogauche").remove();
+            //         // $(".logogauche").load("bart_simpson.jpg");
+            //         $("#logomain").prepend('<img src="img/bart_simpson.jpg" alt="Simpson" width="540px" height="174px">');
+            //     });
+            // });
+
+            $("#logomain").click(function() {
+                var hyundai = $(".logogauche").attr("src='img/Hyundai_Logo.jpg'");
+                var simpson = $(".logogauche").attr("src='img/bart_simpson.jpg'");
+                $(".logogauche").html("<img " simpson ">");
+
+            });
             // Test pour faire que si l'on clique en dehors de la modal, elle disparait.
 
             // $(document).ready(function() {
