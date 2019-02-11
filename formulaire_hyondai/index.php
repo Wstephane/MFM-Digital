@@ -181,7 +181,14 @@
                 }
             }));
 
-            
+            // Apparition de Bart Simpson quand on click sur le logo Hyndai 
+            $("#logomain").click(function() {
+                var simpson = $(".logogauche").attr("src", "img/bart_simpson.jpg");
+                $(".logogauche").html($simpson);
+            });
+
+
+            // Autre méthode pour faire apparaitre Bart Simpson, fonctionnel mais moins efficace et jolie
             // $(document).ready(function() {
             //     $(".logogauche").click (function() {
             //         $(".logogauche").remove();
@@ -190,12 +197,6 @@
             //     });
             // });
 
-            $("#logomain").click(function() {
-                var hyundai = $(".logogauche").attr("src='img/Hyundai_Logo.jpg'");
-                var simpson = $(".logogauche").attr("src='img/bart_simpson.jpg'");
-                $(".logogauche").html("<img " simpson ">");
-
-            });
             // Test pour faire que si l'on clique en dehors de la modal, elle disparait.
 
             // $(document).ready(function() {
